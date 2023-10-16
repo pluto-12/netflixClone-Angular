@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieApiServiceService } from 'src/app/service/movie-api-service.service';
 import { Title,Meta } from '@angular/platform-browser';
 
+
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
@@ -17,7 +18,7 @@ export class MovieDetailsComponent implements OnInit {
   getMovieCastResult:any;
   ngOnInit(): void {
     let getParamId = this.router.snapshot.paramMap.get('id');
-    console.log(getParamId,'getparamid#');
+    // console.log(getParamId,'getparamid#');
   
     this.getMovie(getParamId);
     this.getVideo(getParamId);
@@ -26,8 +27,10 @@ export class MovieDetailsComponent implements OnInit {
 
 
   getMovie(id:any){
+    // console.log(id);
+    
     this.service.getMovieDetails(id).subscribe(async(result)=>{
-        console.log(result,'getmoviedetails#');
+        // console.log(result,'getmoviedetails#');
         this.getMovieDetailResult = await result;
 
         // updatetags
@@ -40,7 +43,7 @@ export class MovieDetailsComponent implements OnInit {
   getVideo(id:any)
   {
     this.service.getMovieVideo(id).subscribe((result)=>{
-        console.log(result,'getMovieVideo#');
+        // console.log(result,'getMovieVideo#');
         result.results.forEach((element:any) => {
             if(element.type=="Trailer")
             {
@@ -54,7 +57,7 @@ export class MovieDetailsComponent implements OnInit {
   getMovieCast(id:any)
   {
     this.service.getMovieCast(id).subscribe((result)=>{
-      console.log(result,'movieCast#');
+      // console.log(result,'movieCast#');
       this.getMovieCastResult = result.cast;
     });
   }

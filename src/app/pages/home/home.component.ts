@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   // bannerdata
   bannerData() {
     this.service.bannerApiData().subscribe((result) => {
-      console.log(result, 'bannerresult#');
+      // console.log(result, 'bannerresult#');
       this.bannerResult = result.results;
     });
   }
@@ -57,6 +57,7 @@ export class HomeComponent implements OnInit {
   // action 
   actionMovie() {
     this.service.fetchActionMovies().subscribe((result) => {
+      // console.log(result, 'actionresult#');
       this.actionMovieResult = result.results;
     });
   }
